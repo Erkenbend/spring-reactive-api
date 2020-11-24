@@ -1,0 +1,63 @@
+openapi: "3.0.3"
+info:
+  version: 1.0.0
+  title: Example reactive API
+servers:
+  - url: http://localhost:8080
+paths:
+  /things:
+    get:
+      summary: List things
+      description: This takes some time
+      operationId: listThings
+      tags:
+        - things
+      parameters:
+        - name: nbThings
+          in: query
+          description: How many things to return
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: A list of things
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Things"
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Thing:
+      type: object
+      required:
+        - id
+        - content
+      properties:
+        id:
+          type: integer
+          format: int64
+        content:
+          type: string
+    Things:
+      type: array
+      items:
+        $ref: "#/components/schemas/Thing"
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
