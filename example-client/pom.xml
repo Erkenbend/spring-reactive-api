@@ -6,10 +6,58 @@
     <artifactId>example-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-reactive-client</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.0</version>
+        <relativePath/>
+    </parent>
 
     <properties>
-        <default.package>com.example.spring-reactive.api.spring-server</default.package>
+        <java.version>11</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <lombok.version>1.18.16</lombok.version>
+        <spring-boot.version>2.4.0</spring-boot.version>
+        <spring.version>5.3.1</spring.version>
     </properties>
 
-    <!-- TODO -->
+    <dependencies>
+        <!-- API definition -->
+        <dependency>
+            <groupId>com.example.spring-reactive</groupId>
+            <artifactId>api-java-client</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!-- Spring and Spring-Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Other -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

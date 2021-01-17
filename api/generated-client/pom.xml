@@ -13,7 +13,7 @@
     <name>spring-reactive-api-java-client</name>
 
     <properties>
-        <default.package>com.example.spring-reactive.api.spring-server</default.package>
+        <default.package>com.example.spring-reactive.api.java_client</default.package>
     </properties>
 
     <build>

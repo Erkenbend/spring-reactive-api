@@ -1,0 +1,8 @@
+server:
+  port: 8082
+spring:
+  main:
+    web-application-type: REACTIVE
+api:
+  server:
+    address: "http://localhost:8081"
