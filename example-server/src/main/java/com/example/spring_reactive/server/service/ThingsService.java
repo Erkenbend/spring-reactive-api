@@ -16,8 +16,8 @@ public class ThingsService {
     private static final Logger log = LogManager.getLogger(ThingsService.class);
 
     public Flux<Thing> getThings(Integer nbThings) {
-        //return this.getThingsFromExistingStream(nbThings);
-        return this.getThingsFromLiveEvents(nbThings);
+        return this.getThingsFromExistingStream(nbThings);
+        //return this.getThingsFromLiveEvents(nbThings);
     }
 
     public Flux<Thing> getThingsFromLiveEvents(Integer nbThings) {

@@ -24,13 +24,13 @@ paths:
         '200':
           description: A list of things
           content:
-            application/json:
+            text/event-stream:
               schema:
                 $ref: "#/components/schemas/Things"
         default:
           description: Unexpected error
           content:
-            application/json:
+            text/event-stream:
               schema:
                 $ref: "#/components/schemas/Error"
 components:
