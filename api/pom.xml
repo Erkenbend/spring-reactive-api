@@ -30,6 +30,10 @@
         <validation-api.version>2.0.1.Final</validation-api.version>
         <jackson-annotations.version>2.11.3</jackson-annotations.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+        <jackson-databind.version>2.12.1</jackson-databind.version>
+        <jackson-datatype-threetenbp.version>2.11.4</jackson-datatype-threetenbp.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <spring-boot.version>2.4.0</spring-boot.version>
     </properties>
 
     <modules>
@@ -38,18 +42,19 @@
     </modules>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
@@ -71,7 +76,7 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
             <version>${okhttp3.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>io.swagger</groupId>
@@ -85,7 +90,7 @@
             <version>${javax.annotation-api.version}</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.threeten</groupId>
             <artifactId>threetenbp</artifactId>
             <version>${threetenbp.version}</version>
@@ -107,7 +112,7 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
             <version>${reactor-core.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>javax.validation</groupId>
@@ -115,16 +120,47 @@
             <version>${validation-api.version}</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotations.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
             <version>${jackson-databind-nullable.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.joschi.jackson</groupId>
+            <artifactId>jackson-datatype-threetenbp</artifactId>
+            <version>${jackson-datatype-threetenbp.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
     </dependencies>
 </project>
