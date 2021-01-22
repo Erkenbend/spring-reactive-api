@@ -27,7 +27,7 @@ public class TriggerController {
         this.thingsApi = thingsApi;
     }
 
-    @GetMapping("/trigger/naive")
+    @GetMapping("/trigger")
     public ResponseEntity<List<String>> getThingsFromServer() {
         log.info("Begin of Controller, requesting {} things", NB_THINGS_TO_REQUEST);
         Flux<Thing> things = thingsApi.listThings(5);
