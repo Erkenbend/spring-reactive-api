@@ -32,7 +32,6 @@
                             <inputSpec>${project.basedir}/../my-reactive-api.yml</inputSpec>
                             <output>${project.buildDir}</output>
                             <generatorName>java</generatorName>
-                            <!--<generateSupportingFiles>true</generateSupportingFiles>-->
                             <configOptions>
                                 <library>webclient</library>
                                 <dateLibrary>java11</dateLibrary>
