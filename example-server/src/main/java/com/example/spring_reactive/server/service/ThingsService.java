@@ -35,6 +35,7 @@ public class ThingsService {
     }
 
     private Stream<String> getRawThings(Integer nbThings) {
+        // TODO: get from DB
         return IntStream.range(0, nbThings)
                 .mapToObj(i -> String.format("thing #%s", i));
     }

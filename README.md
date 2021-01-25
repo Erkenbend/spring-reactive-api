@@ -1,6 +1,6 @@
 # spring-reactive-api
 
-TODO: good readme
+TODO: improve readme
 
 ## Build
 
@@ -36,3 +36,12 @@ to receive a response for `n` objects. But because of smart `Flux`
 chaining it only takes about `1 + 1.5 + 1.5*n = 1.5*n + 2.5` seconds.
 That's 10 seconds for 5 objects (compared to 20 for sync variant),
 with the gap growing for larger requests.
+
+# Contribute
+
+## Next steps
+
+- Add DB and reactive repository with R2DBC
+- Add security
+- ???
+- Profit
