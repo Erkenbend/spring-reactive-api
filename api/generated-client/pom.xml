@@ -32,10 +32,14 @@
                             <inputSpec>${project.basedir}/../my-reactive-api.yml</inputSpec>
                             <output>${project.buildDir}</output>
                             <generatorName>java</generatorName>
-
-                            <apiPackage>${default.package}.handler</apiPackage>
-                            <modelPackage>${default.package}.model</modelPackage>
-                            <invokerPackage>${default.package}.handler</invokerPackage>
+                            <configOptions>
+                                <library>webclient</library>
+                                <dateLibrary>java11</dateLibrary>
+                                <apiPackage>${default.package}.handler</apiPackage>
+                                <modelPackage>${default.package}.model</modelPackage>
+                                <invokerPackage>${default.package}.handler</invokerPackage>
+                                <interfaceOnly>true</interfaceOnly>
+                            </configOptions>
                         </configuration>
                     </execution>
                 </executions>
