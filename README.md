@@ -18,7 +18,33 @@ Server endpoint: `GET http://localhost:8081/things?nbThings=5`
 
 Client endpoint to trigger call to server: `GET http://localhost:8082/trigger`
 
-## Flow
+### In progress
+
+Populate DB with POST-endpoint (not linked to GET-endpoint for now): `POST http://localhost:8081/things`
+
+with JSON Body (example):
+
+```
+[
+	{
+		"content": "blabla"
+	},
+	{
+		"content": "blibli"
+	},
+	{
+		"content": "bloblo"
+	},
+	{
+		"content": "blublu"
+	},
+	{
+		"content": "bleble"
+	}
+]
+```
+
+## Flow (of GET-endpoint)
 
 Simple chain:
 - Trigger Client endpoint
@@ -41,7 +67,8 @@ with the gap growing for larger requests.
 
 ## Next steps
 
-- Add DB and reactive repository with R2DBC
+- Extend DB usage to GET-endpoint
 - Add security
+- Somehow integrate Liquibase (buggy with r2dbc) or Flyway for automatic DB migration
 - ???
 - Profit

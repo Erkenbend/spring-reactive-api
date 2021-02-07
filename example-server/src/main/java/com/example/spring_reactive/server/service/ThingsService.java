@@ -59,8 +59,9 @@ public class ThingsService {
 
     public Mono<Boolean> saveThings(Flux<Thing> things) {
         log.info("Begin converting and saving things from flux");
-        return things.map(ThingMapper.INSTANCE::thingApiToDb)
-                .map(thingsRepository::save)
+        return thingsRepository
+                .saveAll(things.map(ThingMapper.INSTANCE::thingApiToDb).log())
+                .log()
                 .map(t -> true)
                 .reduce((a, b) -> a && b);
     }
