@@ -25,8 +25,6 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <r2dbc-mysql.version>0.8.2.RELEASE</r2dbc-mysql.version>
-        <liquibase-core.version>4.2.2</liquibase-core.version>
-        <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
     </properties>
 
     <dependencies>
@@ -63,12 +61,6 @@
             <version>${r2dbc-mysql.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase-core.version}</version>
-        </dependency>
-
         <!-- Other -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -82,21 +74,6 @@
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
-
-        <!-- BEGIN remove me after https://liquibase.jira.com/browse/CORE-3419 -->
-        <!-- need to add non-reactive libs because Liquibase does not work with r2dbc -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-            <version>${spring-boot.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
-        </dependency>
-        <!-- END remove me -->
     </dependencies>
 
     <build>
