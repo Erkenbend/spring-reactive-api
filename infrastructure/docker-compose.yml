@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  db:
+    image: library/mysql:8.0.23
+    env_file:
+      - env/db.env
+    ports:
+    - 3306:3306

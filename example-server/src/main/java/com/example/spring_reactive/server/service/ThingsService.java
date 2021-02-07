@@ -1,12 +1,15 @@
 package com.example.spring_reactive.server.service;
 
 import com.example.spring_reactive.api.spring_server.model.Thing;
+import com.example.spring_reactive.server.db.repository.ThingsRepository;
 import com.example.spring_reactive.server.factory.ThingFactory;
+import com.example.spring_reactive.server.mapping.ThingMapper;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 import java.util.stream.IntStream;
@@ -17,6 +20,12 @@ public class ThingsService {
     private static final Logger log = LogManager.getLogger(ThingsService.class);
 
     private static final Integer UPPERCASE_CONVERSION_DELAY_MILLIS = 1000;
+
+    private final ThingsRepository thingsRepository;
+
+    public ThingsService(ThingsRepository thingsRepository) {
+        this.thingsRepository = thingsRepository;
+    }
 
     public Flux<Thing> getThings(Integer nbThings) {
         //return this.getThingsFromExistingStream(nbThings);
@@ -46,5 +55,13 @@ public class ThingsService {
         Thread.sleep(UPPERCASE_CONVERSION_DELAY_MILLIS);
         log.info("Converting input to uppercase \"{}\" now", input);
         return input.toUpperCase();
+    }
+
+    public Mono<Boolean> saveThings(Flux<Thing> things) {
+        log.info("Begin converting and saving things from flux");
+        return things.map(ThingMapper.INSTANCE::thingApiToDb)
+                .map(thingsRepository::save)
+                .map(t -> true)
+                .reduce((a, b) -> a && b);
     }
 }

@@ -25,8 +25,8 @@
         <swagger-annotations.version>1.6.2</swagger-annotations.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
-        <spring.version>5.3.1</spring.version>
         <spring-boot.version>2.4.0</spring-boot.version>
+        <jsr305.version>3.0.2</jsr305.version>
     </properties>
 
     <modules>
@@ -53,17 +53,18 @@
             <version>${jackson-databind-nullable.version}</version>
         </dependency>
 
+        <!-- solves the javax.annotation.Nullable problem -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-            <version>${spring.version}</version>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
         </dependency>
 
         <!-- this dependency brings all the annoying smaller deps with it,
              like jackson-databind, threetenbp, okhttp, ... -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>

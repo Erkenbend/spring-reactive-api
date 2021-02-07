@@ -33,12 +33,32 @@ paths:
             text/event-stream:
               schema:
                 $ref: "#/components/schemas/Error"
+    post:
+      summary: Create new things
+      description: This takes some time
+      operationId: createThings
+      tags:
+        - things
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Things'
+      responses:
+        '201':
+          description: Creation successful
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Thing:
       type: object
       required:
-        - id
         - content
       properties:
         id:

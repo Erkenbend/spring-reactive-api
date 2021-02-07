@@ -3,3 +3,17 @@ server:
 spring:
   main:
     web-application-type: REACTIVE
+  r2dbc:
+    url: r2dbc:mysql://127.0.0.1:3306/example
+    username: dbuser
+    password: dbpassword
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
+    # double config needed because liquibase does not support r2dbc
+    url: jdbc:mysql://127.0.0.1:3306/example
+    user: dbuser
+    password: dbpassword
+logging:
+  level:
+    root: INFO
+    com.example.spring_reactive: DEBUG

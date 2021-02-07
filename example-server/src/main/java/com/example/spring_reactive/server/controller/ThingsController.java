@@ -2,12 +2,14 @@ package com.example.spring_reactive.server.controller;
 
 import com.example.spring_reactive.api.spring_server.handler.ThingsApi;
 import com.example.spring_reactive.api.spring_server.model.Thing;
+import com.example.spring_reactive.server.mapping.ThingMapper;
 import com.example.spring_reactive.server.service.ThingsService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
@@ -26,6 +28,18 @@ public class ThingsController implements ThingsApi {
     public ThingsController(ThingsService thingsService) {
         this.thingsService = thingsService;
     }
+
+    @Override
+    public Mono<ResponseEntity<Void>> createThings(
+            @Valid @RequestBody Flux<Thing> things,
+            ServerWebExchange exchange
+    ) {
+        log.info("Begin of Controller, creating things from flux");
+        Mono<Boolean> success = thingsService.saveThings(things);
+        log.info("Mono obtained from service");
+        return success.map(b -> new ResponseEntity<>(b ? HttpStatus.OK : HttpStatus.INTERNAL_SERVER_ERROR));
+    }
+
 
     @Override
     public Mono<ResponseEntity<Flux<Thing>>> listThings(
