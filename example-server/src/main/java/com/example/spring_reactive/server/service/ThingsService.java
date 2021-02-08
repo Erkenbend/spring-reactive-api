@@ -58,9 +58,21 @@ public class ThingsService {
     }
 
     public Mono<Boolean> saveThings(Flux<Thing> things) {
-        log.info("Begin converting and saving things from flux");
+        log.info("Begin converting and saving things from Flux");
         return thingsRepository
+                // transform the initial Flux<Thing> into Flux<ThingDAO> and give it to saveAll
                 .saveAll(things.map(ThingMapper.INSTANCE::thingApiToDb).log())
+                .log()
+                // result: true if everything returned an instance of Thing
+                .map(t -> true)
+                .reduce((a, b) -> a && b);
+    }
+
+    public Mono<Boolean> saveThing(Mono<Thing> thing) {
+        log.info("Begin converting and saving thing from Mono");
+        return thingsRepository
+                // Mono is a publisher, just like Flux, so we have to use the saveAll trick here too
+                .saveAll(thing.map(ThingMapper.INSTANCE::thingApiToDb).log())
                 .log()
                 .map(t -> true)
                 .reduce((a, b) -> a && b);

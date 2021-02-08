@@ -54,6 +54,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /thing:
+    post:
+      summary: Create one new thing
+      description: This takes some time
+      operationId: createThing
+      tags:
+        - things
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Thing'
+      responses:
+        '201':
+          description: Creation successful
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Thing:
